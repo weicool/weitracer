@@ -1,5 +1,6 @@
 WeiTracer
 Copyright © 2009-2010 Wei Yeh
+Developed on Mac OS X Snow Leopard
 
 #####################
 # Compilation
@@ -14,6 +15,19 @@ Use "make"; resulting executable is named "weitracer"
 #####################
 # Input File Spec
 #####################
+
+
+#####################
+# Dependencies
+#####################
+
+1. Install MacPorts
+    http://www.macports.org/install.php
+2. Install ImageMagick (warning: this takes over half an hour on a decent connection)
+    sudo port install ImageMagick
+3. Install RMagick
+    sudo gem install rmagick --no-rdoc --no-ri
+
 
 #####################
 # Credits
