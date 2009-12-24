@@ -23,7 +23,17 @@ class Sampler
     @bot_right = bot_right
   end
 
-  
+  def generateSamples
+    samples = []
+    
+    samples
+  end
+
+  private
+
+  def generateSample
+    
+  end
 
 end
 

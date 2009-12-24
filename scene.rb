@@ -11,7 +11,12 @@ class Scene
 
   def render
     debug 'rendering...'
-    
+
+    @sampler.generateSamples.each do |sample|
+      ray = @camera.generateRay(sample)
+      color = @raytracer.trace(ray, TRACE_RECURSION_DEPTH)
+      @film.commit(sample, color)
+    end
   end
 
 end

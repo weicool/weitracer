@@ -40,7 +40,8 @@ if run_main?
   camera = Camera.new(parser.camera_loc)
   raytracer = RayTracer.new(parser.shapes, parser.lights, camera)
   film = Film.new(parser.width, parser.height, ofile_name)
-  
   scene = Scene.new(sampler, camera, raytracer, film)
   scene.render()
+  
+  film.output
 end

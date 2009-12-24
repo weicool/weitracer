@@ -10,4 +10,8 @@ class RayTracer
     @camera = camera
   end
 
+  def trace(ray, depth)
+    Color[0.0, 0.0, 0.0, 1.0]
+  end
+
 end
