@@ -23,16 +23,21 @@ class Sampler
     @bot_right = bot_right
   end
 
-  def generateSamples
-    samples = []
-    
-    samples
-  end
+  def samples
+    (0...@width).each do |x|
+      (0...@height).each do |y|
+        image_space = Vector[x, y]
 
-  private
+        u = (x+0.5) / @width
+        v = (y+0.5) / @height
 
-  def generateSample
-    
+        left = @bot_left*(1-v) + @top_left*v
+        right = @bot_right*(1-v) + @top_right*v
+        world_space = left*(1-u) + right*u
+
+        yield Sample.new(world_space, image_space)
+      end
+    end
   end
 
 end

@@ -27,9 +27,9 @@ class Film
   end
 
   def commit(sample, color)
-    x = sample.world_space.x
-    y = sample.world_space.y
-    @film[y, x] = color
+    x = sample.image_space.x
+    y = sample.image_space.y
+    @film[y][x] = color
   end
 
 end

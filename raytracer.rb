@@ -11,7 +11,7 @@ class RayTracer
   end
 
   def trace(ray, depth)
-    Color[0.0, 0.0, 0.0, 1.0]
+    Color[1.0, 0.0, 0.0, 1.0]
   end
 
 end
