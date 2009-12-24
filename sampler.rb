@@ -24,8 +24,8 @@ class Sampler
   end
 
   def samples
-    (0...@width).each do |x|
-      (0...@height).each do |y|
+    (0...@height).each do |y|
+      (0...@width).each do |x|
         image_space = Vector[x, y]
 
         u = (x+0.5) / @width

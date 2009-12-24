@@ -2,6 +2,7 @@ require 'Matrix'
 
 MAX_FLOAT = 10_000_000_000.0
 TRACE_RECURSION_DEPTH = 1
+SHADOW_BIAS = 0.0001
 
 DEBUG = true
 def debug(s)
@@ -29,11 +30,23 @@ class Vector
   def z; self[2]; end
 
   def /(s)
-    (0..2).each {|i| self[i] /= s }
+    Vector[self[0]/s, self[1]/s, self[2]/s]
   end
   
   def normalize
     self / norm
+    self
+  end
+
+end
+
+def Integer
+
+  def -(vector)
+    if vector.respond_to?(:dot)
+      vector * -1
+    end
+    self
   end
 
 end

@@ -1,4 +1,6 @@
 require 'utilities'
+require 'shape'
+require 'light'
 
 class Parser
 
@@ -12,11 +14,11 @@ class Parser
     @width = 100
     @height = 100
     @camera_loc = Vector[0.0, 0.0, 0.0]
-    @top_left = Vector[-1.0, 1.0, 0.0]
-    @top_right = Vector[1.0, 1.0, 0.0]
-    @bot_left = Vector[-1.0, -1.0, 0.0]
-    @bot_right = Vector[1.0, -1.0, 0.0]
-    @shapes = []
+    @top_left = Vector[-1.0, 1.0, -3.0]
+    @top_right = Vector[1.0, 1.0, -3.0]
+    @bot_left = Vector[-1.0, -1.0, -3.0]
+    @bot_right = Vector[1.0, -1.0, -3.0]
+    @shapes = ShapeList.new
     @lights = []
   end
   

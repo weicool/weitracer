@@ -9,27 +9,20 @@ class Film
     @height = h
     @ofile_name = ofile_name
     @film = [[Color[0.0, 0.0, 0.0, 0.0]] * @width] * @height
+    @image = Image.new(@width, @height) { self.background_color = 'black' }
   end
 
   def output
-    # test image writing
-    image = Image.new(@width, @height) { self.background_color = 'black' }
-    (0...@width).each do |x|
-      (0...@height).each do |y|
-        color = @film[y][x]
-        pixel = Pixel.new(color.r * QuantumRange,
-                          color.g * QuantumRange, 
-                          color.b * QuantumRange, 1.0)
-        image.pixel_color(x, y, pixel)
-      end
-    end
-    image.display
+    @image.display
   end
 
   def commit(sample, color)
     x = sample.image_space.x
     y = sample.image_space.y
-    @film[y][x] = color
+    pixel = Pixel.new(color[0] * QuantumRange,
+                      color[1] * QuantumRange, 
+                      color[2] * QuantumRange, 1.0)
+    @image.pixel_color(x, y, pixel)
   end
 
 end
