@@ -10,8 +10,6 @@ class Scene
   end
 
   def render
-    debug 'rendering...'
-
     @sampler.samples do |sample|
       ray = @camera.generate_ray(sample)
       color = @raytracer.trace(ray, TRACE_RECURSION_DEPTH)

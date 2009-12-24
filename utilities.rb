@@ -21,8 +21,19 @@ end
 
 class Vector
 
+  alias_method :norm, :r
+  alias_method :dot, :inner_product
+
   def x; self[0]; end
   def y; self[1]; end
   def z; self[2]; end
+
+  def /(s)
+    (0..2).each {|i| self[i] /= s }
+  end
+  
+  def normalize
+    self / norm
+  end
 
 end
