@@ -12,15 +12,15 @@ class Film
   end
 
   def output
-    @image.display
+    @image.flip.display
   end
 
   def commit(sample, color)
     x = sample.image_space.x
     y = sample.image_space.y
-    pixel = Pixel.new(color.r * QuantumRange,
-                      color.g * QuantumRange, 
-                      color.b * QuantumRange, 1.0)
+    pixel = Pixel.new([color.r, 1.0].min * QuantumRange,
+                      [color.g, 1.0].min * QuantumRange, 
+                      [color.b, 1.0].min * QuantumRange, 1.0)
     @image.pixel_color(x, y, pixel)
   end
 

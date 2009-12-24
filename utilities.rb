@@ -44,8 +44,8 @@ class Vector
   end
   
   def normalize
-    self / norm
-    self
+    return self if self[0] == 0.0 && self[1] == 0.0 && self[2] == 0.0
+    self / norm 
   end
 
 end
