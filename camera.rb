@@ -11,7 +11,7 @@ class Camera
   end
 
   def generate_ray(sample)
-    direction = sample.world_space - @camera_loc
+    direction = (sample.world_space - @camera_loc).normalize
     Ray.new(@camera_loc, direction, 1.0, MAX_FLOAT)
   end
 

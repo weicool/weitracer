@@ -1,6 +1,7 @@
 class Light
 
   attr_reader :location, :intensity
+  alias_method :direction, :location
 
   def initialize(location, intensity)
     @location = location
@@ -15,14 +16,12 @@ end
 
 class DirectionalLight < Light
 
-  alias_method :direction, :location
-
   def initialize(direction, intensity)
     super(direction, intensity)
   end
 
   def get_ray(point)
-    Ray.new(point, (-direction.clone).normalize, SHADOW_BIAS, MAX_FLOAT)
+    Ray.new(point, (direction.clone*-1).normalize, SHADOW_BIAS, MAX_FLOAT)
   end
 
 end

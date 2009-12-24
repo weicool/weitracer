@@ -11,8 +11,8 @@ class Parser
   def initialize(ifile_name)
     @ifile_name = ifile_name
     
-    @width = 100
-    @height = 100
+    @width = 200
+    @height = 200
     @camera_loc = Vector[0.0, 0.0, 0.0]
     @top_left = Vector[-1.0, 1.0, -3.0]
     @top_right = Vector[1.0, 1.0, -3.0]
