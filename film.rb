@@ -4,10 +4,10 @@ include Magick
 
 class Film
   
-  def initialize(w, h, ofile)
+  def initialize(w, h, ofile_name)
     @width = w
     @height = h
-    @ofile_name = ofile
+    @ofile_name = ofile_name
     @film = [[nil] * @width] * @height
   end
   

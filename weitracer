@@ -1,7 +1,12 @@
 #!/usr/bin/ruby
 
-require 'film'
 require 'utilities'
+require 'parser'
+require 'scene'
+require 'raytracer'
+require 'camera'
+require 'sampler'
+require 'film'
 
 def run_main?; __FILE__ == $0; end
 # main
@@ -27,6 +32,15 @@ if run_main?
   end
   debug "input: #{ifile_name}; output: #{ofile_name}"
   
+  parser = Parser.new(ifile_name)
+  parser.parse()
   
+  sampler = Sampler.new(parser.width, parser.height,
+      parser.top_left, parser.top_right, parser.bot_left, parser.bot_right)
+  camera = Camera.new(parser.camera_loc)
+  raytracer = RayTracer.new(parser.shapes, parser.lights, camera)
+  film = Film.new(parser.width, parser.height, ofile_name)
   
+  scene = Scene.new(sampler, camera, raytracer, film)
+  scene.render()
 end

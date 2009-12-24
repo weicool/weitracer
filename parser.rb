@@ -2,18 +2,20 @@ require 'utilities'
 
 class Parser
 
-  attr_reader :width, :height, :camera,
+  attr_reader :width, :height, :camera_loc,
     :top_left, :top_right, :bot_left, :bot_right,
     :shapes, :lights
 
-  def initialize()
+  def initialize(ifile_name)
+    @ifile_name = ifile_name
+    
     @width = 100
     @height = 100
-    @camera = nil
-    @top_left = Vector[-1, 1, 0]
-    @top_right = Vector[1, 1, 0]
-    @bot_left = Vector[-1, -1, 0]
-    @bot_right = Vector[1, -1, 0]
+    @camera_loc = Vector[0.0, 0.0, 0.0]
+    @top_left = Vector[-1.0, 1.0, 0.0]
+    @top_right = Vector[1.0, 1.0, 0.0]
+    @bot_left = Vector[-1.0, -1.0, 0.0]
+    @bot_right = Vector[1.0, -1.0, 0.0]
     @shapes = []
     @lights = []
   end
