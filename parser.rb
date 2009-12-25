@@ -22,8 +22,43 @@ class Parser
     @lights = []
   end
   
-  def parse()
+  def parse
+    File.open(@ifile_name, 'r') do |file|
+      while line = file.gets
+        keyword = line.strip.split[0]
+        case keyword
+        when 'scene'
+          parse_scene(file)
+        end
+      end
+    end
     
+    debug "width: #{@width}, height: #{height}"
+    debug "camera_loc: #{@camera_loc}"
+    debug "ul: #{@top_left}, ur: #{@top_right}"
+    debug "ll: #{@bot_left}, lr: #{@bot_right}"
   end
-  
+
+  private
+
+  def parse_scene(file)
+    while line = file.gets
+      line = line.strip.split
+      property = line[0]
+      case property
+      when 'size'
+        @width = line[1].to_i
+        @height = line[2].to_i
+      when 'cam'
+        @camera_loc = Vector.elements(line[1..-1].map {|n| n.to_f})
+      when 'ul', 'ur', 'll', 'lr'
+        corner = {'ul'=>:@top_left, 'ur'=>:@top_right,
+                  'll'=>:@bot_left, 'lr'=>:@bot_right}[property]
+        self.instance_variable_set(corner, Vector.elements(line[1..-1].map {|n| n.to_f}))
+      when '}'
+        return
+      end
+    end
+  end
+
 end
