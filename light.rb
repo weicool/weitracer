@@ -25,3 +25,15 @@ class DirectionalLight < Light
   end
 
 end
+
+class PointLight < Light
+
+  def initialize(location, intensity)
+    super(location, intensity)
+  end
+
+  def get_ray(point)
+    Ray.new(point, location - point, SHADOW_BIAS, 1.0)
+  end
+
+end

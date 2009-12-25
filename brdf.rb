@@ -1,8 +1,11 @@
 class BRDF
 
-  attr_reader :kd, :ks, :ka, :kr, :sp
+  attr_accessor :kd, :ks, :ka, :kr, :sp
+  
+  def initialize
+  end
 
-  def initialize(kd, ks, ka, kr, sp)
+  def initialize(kd=nil, ks=nil, ka=nil, kr=nil, sp=0.0)
     @kd = kd
     @ks = ks
     @ka = ka

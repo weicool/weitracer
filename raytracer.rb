@@ -11,11 +11,6 @@ class RayTracer
     @shapes = shapes
     @lights = lights
     @camera = camera
-    
-    # temporary
-    brdf = BRDF.new(Color[0.8, 0.0, 0.0], Color[1.0, 1.0, 1.0], Color[0.08, 0.0, 0.0], Color[1.0, 1.0, 1.0], 20.0)
-    @shapes << Sphere.new(Vector[0.0, 0.0, -4.0], 1.0, brdf, nil)
-    @lights << DirectionalLight.new(Vector[0.6, -0.6, -0.6], Color[1.0, 1.0, 1.0])
   end
 
   def trace(ray, depth)
