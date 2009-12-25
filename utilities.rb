@@ -2,7 +2,7 @@ require 'Matrix'
 
 MAX_FLOAT = 10_000_000_000.0
 TRACE_RECURSION_DEPTH = 1
-SHADOW_BIAS = 0.0001
+SHADOW_BIAS = 0.0000001
 
 DEBUG = true
 def debug(s)

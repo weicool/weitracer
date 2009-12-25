@@ -18,7 +18,7 @@ class Scene
       
       y = sample.image_space.y 
       if y % 50 == 0 && y != prev_y
-        debug y
+        debug "processed line #{y}"
         prev_y = y
       end
     end

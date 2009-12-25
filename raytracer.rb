@@ -20,19 +20,22 @@ class RayTracer
 
   def trace(ray, depth)
     color = Color[0.0, 0.0, 0.0]
-    
+
     intersection = @shapes.intersect(ray)
     return color if depth <= 0 || !intersection
-    
+
     brdf = intersection.shape.brdf
     color += brdf.ka
-    
+
     @lights.each do |light|
       light_ray = light.get_ray(intersection.point)
       light_color = light.intensity
-      color += shade(brdf, light_ray, ray, intersection, light_color)
+
+      unless in_shadow?(light_ray)
+        color += shade(brdf, light_ray, ray, intersection, light_color)
+      end
     end
-    
+
     color
   end
 
@@ -52,6 +55,10 @@ class RayTracer
     color += (brdf.ks*light_color) * phong
     
     color
+  end
+  
+  def in_shadow?(light_ray)
+    !@shapes.intersect(light_ray).nil?
   end
 
 end
