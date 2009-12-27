@@ -6,28 +6,7 @@ SHADOW_BIAS = 0.0000001
 
 DEBUG = true
 def debug(s)
-  if DEBUG
-    puts s
-  end
-end
-
-class Color < Vector
-
-  def r; self[0]; end
-  def g; self[1]; end
-  def b; self[2]; end
-
-  def +(color); Color[self[0]+color[0], self[1]+color[1], self[2]+color[2]]; end
-  def *(val)
-    if val.respond_to?(:dot)
-      Color[self[0]*val[0], self[1]*val[1], self[2]*val[2]]
-    else
-      Color[self[0]*val, self[1]*val, self[2]*val]
-    end
-  end
-
-  def to_s; "Color[#{r}, #{g}, #{b}]"; end
-
+  puts s if DEBUG
 end
 
 class Vector
@@ -44,8 +23,30 @@ class Vector
   end
   
   def normalize
-    return self if self[0] == 0.0 && self[1] == 0.0 && self[2] == 0.0
+    return clone if norm == 0.0
     self / norm 
   end
+
+end
+
+class Color < Vector
+
+  def r; self[0]; end
+  def g; self[1]; end
+  def b; self[2]; end
+
+  def +(color)
+    Color[self[0]+color[0], self[1]+color[1], self[2]+color[2]]
+  end
+
+  def *(val)
+    if val.respond_to?(:[])
+      Color[self[0]*val[0], self[1]*val[1], self[2]*val[2]]
+    else
+      Color[self[0]*val, self[1]*val, self[2]*val]
+    end
+  end
+
+  def to_s; "Color[#{r}, #{g}, #{b}]"; end
 
 end
