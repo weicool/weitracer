@@ -3,18 +3,15 @@ Copyright © 2009-2010 Wei Yeh :: weicool@gmail.com
 Developed on Mac OS X Snow Leopard
 
 #####################
-# Compilation
-#####################
-
-Use "make"; resulting executable is named "weitracer"
-
-#####################
 # Usage
 #####################
+
+./weitracer -i INPUT_FILE -o OUTPUT_FILE
 
 #####################
 # Input File Spec
 #####################
+
 
 
 #####################

@@ -8,9 +8,11 @@ require 'camera'
 require 'sampler'
 require 'film'
 
-def run_main?; __FILE__ == $0; end
-# main
-if run_main?
+def main; yield if __FILE__ == $0; end
+
+main do
+  time_start = Time.now
+  
   # defaults
   ifile_name = 'input-00'
   ofile_name = 'output-00'
@@ -42,6 +44,8 @@ if run_main?
   film = Film.new(parser.width, parser.height, ofile_name)
   scene = Scene.new(sampler, camera, raytracer, film)
   scene.render()
+  
+  debug "#{Time.now - time_start} seconds"
   
   film.output
 end
